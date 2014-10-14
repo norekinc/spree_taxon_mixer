@@ -1,1 +1,19 @@
-<%= render 'spree/admin/shared/product_sub_menu' %>
+<% content_for :page_title do %>
+  <%= Spree.t(:taxons) %>
+<% end %>
+
+<% content_for :table_filter_title do %>
+  <%= Spree.t(:choose_a_taxon_to_display_related_taxons) %>
+<% end %>
+
+<% content_for :table_filter do %>
+  <div data-hook="admin_taxons_index_search" class="columns six">
+    <input type='text' id='taxon_mixer_id' />
+  </div>
+<% end %>
+
+<%= render :partial => 'spree/admin/shared/product_sub_menu' %>
+<span id='sorting_explanation' style='display:none'><%= Spree.t(:click_and_drag_on_the_products_to_sort_them) %></span>
+<ul id='taxon_related_taxons'></ul>
+
+<%= render :partial => "spree/admin/taxon_mixer/related_taxons" %>
